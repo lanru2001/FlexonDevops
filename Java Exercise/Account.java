@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Account
 {
     int acc_num;
@@ -8,6 +10,8 @@ public class Account
     long phone_num;
     int transac_count = 1;
     int thousand = 1000;
+    List transac_history =  new ArrayList<>(); 
+    //transac_history.add("Debit: 100 New Balance: 100");
     public Account(int acc_num, int balance, String cust_name, String email, long phone_num, String account_type)
     {
         this.balance = balance;
@@ -16,6 +20,7 @@ public class Account
         this.phone_num = phone_num;
         this.acc_num = acc_num;
         this.account_type = account_type;
+        transac_history.add("Debit: 100 New Balance: 100");
     }
     public void deposit(int dep)
     {
@@ -29,7 +34,11 @@ public class Account
             System.out.println("Transaction less than 50 and more than 500 are not allowed.");
             System.exit(0);
         }
-        balance += dep;transac_count++; 
+        balance += dep;
+        transac_count++; 
+        String a = "Debit: "+ String.valueOf(dep) + " New Balance: " + String.valueOf(balance);
+        System.out.println(a);
+        transac_history.add(a);
         System.out.println("Made a deposit of " + dep + " so now new balance is: " + balance);
     }
     public void withraw(int credit)
@@ -44,7 +53,11 @@ public class Account
             System.out.println("Insufficient Balance");
             System.exit(0);
         }
-        else{balance -= credit;thousand-=credit;
+        else{
+            balance -= credit;
+            thousand-=credit;
+            String a = "Credit: "+ String.valueOf(credit) + " New Balance: " + String.valueOf(balance);
+            transac_history.add(a);
             System.out.println("Balance = " + balance);
             System.out.println("Name of Account Holder: " + cust_name);
             System.out.println("The remaining withrawl balance for today is: " + thousand);
@@ -60,6 +73,10 @@ public class Account
         System.out.println("Email of Account Holder: " + email);
         System.out.println("Account Type: " + account_type);
         System.out.println("Date and Time for this Trans: " + java.time.LocalDate.now() + "  " + java.time.LocalTime.now()  );
+    }
+    public void transaction_history()
+    {
+        System.out.println("Transaction History: " + transac_history);
     }
     public int get_balance(){
         return balance;

@@ -16,29 +16,32 @@ public class entrypoint
             switch(n)
             {
             case 1: System.out.println("Balance is: " + a1.get_balance()); 
-                    System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Exit");
+                    System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Tranaction History\n6.Exit");
                     n = sc.nextInt();  
                     break;
             case 2: System.out.println("Enter the amount you want to deposit");
                     int amt = sc.nextInt();  
                     a1.deposit(amt);
-                    System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Exit");
+                    System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Tranaction History\n6.Exit");
                     n = sc.nextInt(); 
                     break;
             case 3: System.out.println("Enter the amount you want to withraw");
                     int amt1 = sc.nextInt();  
                     a1.withraw(amt1);
-                    System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Exit");
+                    System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Tranaction History\n6.Exit");
                     n = sc.nextInt(); 
                     break;
             case 4: a1.get_details();
-                    System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Exit");
+                    System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Tranaction History\n6.Exit");
                     n = sc.nextInt(); 
                     break;
-            case 5: System.exit(0);
+            case 5: a1.transaction_history();
+                    System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Tranaction History\n6.Exit");
+                    n = sc.nextInt();
+            case 6: System.exit(0);
                     break;
             default: System.out.println("Congratulations for messing with me");
-                     System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Exit");
+                     System.out.println("\nHere are your choices \n1.Account Balance\n2.Deposit Money\n3.Withraw Money\n4.Get Details\n5.Tranaction History\n6.Exit");
                      n = sc.nextInt();
             }
         }
