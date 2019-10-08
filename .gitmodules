@@ -1,0 +1,3 @@
+[submodule "do"]
+	path = do
+	url = https://github.com/docker/doodle.git
