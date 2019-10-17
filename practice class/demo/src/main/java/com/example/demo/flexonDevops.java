@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import java.util.*;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Component;
 
@@ -10,6 +10,7 @@ public class flexonDevops
 {
         //Scanner sc = new Scanner(System.in);
         ArrayList<Car> devops = new ArrayList<>();
+        Car dev[] = new Car[20];
 
         public flexonDevops()
         {
@@ -26,6 +27,38 @@ public class flexonDevops
             devops.add(newC);
             //return newC;
         }
+        public boolean deleteCar(String color)
+        {
+            for(int i = 0; i < devops.size() ; i++)
+            {
+                if(color.equals(devops.get(i).getCar_color()))
+                    {
+                        devops.remove(devops.get(i));
+                        return true;
+                    } 
+            }
+            return false;
+            //return newC;
+        }
+        public int findColor(String color)
+        {
+            for(int i = 0; i < devops.size() ; i++)
+                if(color.equals(devops.get(i).getCar_color()))
+                        return i;
+            return -1;
+        }
+        public void updateCar(Car n, int i)
+        {
+            devops.get(i).car_color = n.car_color;
+            devops.get(i).car_design = n.car_design;
+            devops.get(i).car_status = n.car_status;
+            devops.get(i).car_type = n.car_type;
+            devops.get(i).speed = n.speed;
+
+        }
+
+
+      
         /*
         Car BMW = new Car("black", "AUtomatic", "Hatchbag", "Park", 0);
         BMW.move(5);
