@@ -13,7 +13,7 @@ public class flexonDevops
 
         public flexonDevops()
         {
-            devops.add(new Car("black", "AUtomatic", "Hatchbag", "Park", 0));
+            devops.add(new Car("black", "Automatic", "Hatchbag", "Park", 0));
         }
 
         public ArrayList<Car> displaycars()
@@ -21,7 +21,11 @@ public class flexonDevops
             return devops;
         }
 
-
+        public void addCar(Car newC)
+        {
+            devops.add(newC);
+            //return newC;
+        }
         /*
         Car BMW = new Car("black", "AUtomatic", "Hatchbag", "Park", 0);
         BMW.move(5);
