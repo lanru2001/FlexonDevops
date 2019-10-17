@@ -1,4 +1,6 @@
-    public class Car
+package com.example.demo;
+
+public class Car
 {
     int speed;
     String car_color;
