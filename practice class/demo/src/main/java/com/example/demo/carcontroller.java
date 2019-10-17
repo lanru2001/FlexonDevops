@@ -25,19 +25,19 @@ public class carcontroller
     @GetMapping("/getall")
     public ArrayList<Car> display()
     {
-        return a.displaycars();
+        return a.displaycars();//localhost:9080/api/vi/getall
     }
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.OK)
     public void addCar(@RequestBody Car newCar)
     {
-        System.out.println("give the details: ");
+        System.out.println("give the details: ");//localhost:9080/api/vi/add
         a.addCar(newCar);
     } 
 
     @DeleteMapping("/delete/{color}")//, method = RequestMethod.GET)
-    public void delete(@PathVariable String color)
+    public void delete(@PathVariable String color)//localhost:9080/api/vi/delete/blue
     {
         if(a.deleteCar(color))
         System.out.println("Deleted!!");
@@ -48,7 +48,7 @@ public class carcontroller
     public void update_put(@PathVariable String color, @RequestBody Car updatedCar)
     {
         if(a.deleteCar(color))
-        a.addCar(updatedCar);
+        a.addCar(updatedCar);//localhost:9080/api/vi/update/put/blue
         else System.out.println("Not found. Can't be replaced");
     }
 
@@ -57,7 +57,7 @@ public class carcontroller
     {
         System.out.println("11");
         int i = a.findColor(color);
-        System.out.println("22");
+        System.out.println("22");//localhost:9080/api/vi/update/patch/red
         if(i>0)
         a.updateCar(updatedCar, i);
         else System.out.println("Not found!!! Can't be updated");
