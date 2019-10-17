@@ -55,7 +55,9 @@ public class carcontroller
     @PatchMapping("/update/patch/{color}")
     public void update_patch(@PathVariable String color, @RequestBody Car updatedCar)
     {
+        System.out.println("11");
         int i = a.findColor(color);
+        System.out.println("22");
         if(i>0)
         a.updateCar(updatedCar, i);
         else System.out.println("Not found!!! Can't be updated");
