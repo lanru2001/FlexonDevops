@@ -50,11 +50,9 @@ public class flexonDevops
         public void updateCar(Car n, int i)
         {
             devops.get(i).car_color = n.car_color;
-            devops.get(i).car_design = n.car_design;
-            devops.get(i).car_status = n.car_status;
-            devops.get(i).car_type = n.car_type;
-            devops.get(i).speed = n.speed;
-
+            devops.get(i).setCar_design(n.car_design);
+            devops.get(i).setCar_speed(n.speed);
+            devops.get(i).setCar_type(n.car_type);
         }
 
 

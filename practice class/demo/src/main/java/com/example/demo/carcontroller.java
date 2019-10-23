@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,35 +20,48 @@ import org.springframework.web.bind.annotation.RestController;
 public class carcontroller
 {
     @Autowired
-    public flexonDevops a;
+    public CarRepository a;
+    @Autowired
+    public flexonDevops f;
 
     @GetMapping("/getall")
-    public ArrayList<Car> display()
+    public List<Car> display()
     {
-        return a.displaycars();//localhost:9080/api/vi/getall
+        return a.findAll();
+        //return a.displaycars();//localhost:9080/api/vi/getall
     }
 
     @PostMapping("/add")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public void addCar(@RequestBody Car newCar)
     {
         System.out.println("give the details: ");//localhost:9080/api/vi/add
-        a.addCar(newCar);
+        f.addCar(newCar);
+        a.save(newCar);
+       
     } 
 
     @DeleteMapping("/delete/{color}")//, method = RequestMethod.GET)
     public void delete(@PathVariable String color)//localhost:9080/api/vi/delete/blue
     {
-        if(a.deleteCar(color))
-        System.out.println("Deleted!!");
+        if(f.findColor(color) != -1 )
+        {
+            a.delete(f.devops.get(f.findColor(color)));
+            System.out.println("Deleted!!");
+        }
         else System.out.println("Not Found");
     }
 
     @PutMapping("/update/put/{color}")
     public void update_put(@PathVariable String color, @RequestBody Car updatedCar)
     {
-        if(a.deleteCar(color))
-        a.addCar(updatedCar);//localhost:9080/api/vi/update/put/blue
+        int i = f.findColor(color);
+        if(i != -1 )
+        {
+            a.save(updatedCar);//localhost:9080/api/vi/update/put/blue
+            a.delete(f.devops.get(i));
+            System.out.println("Deleted!!");
+        }
         else System.out.println("Not found. Can't be replaced");
     }
 
@@ -56,12 +69,10 @@ public class carcontroller
     public void update_patch(@PathVariable String color, @RequestBody Car updatedCar)
     {
         System.out.println("11");
-        int i = a.findColor(color);
+        int i = f.findColor(color);
         System.out.println("22");//localhost:9080/api/vi/update/patch/red
         if(i>0)
-        a.updateCar(updatedCar, i);
+        a.save(f.devops.get(i));
         else System.out.println("Not found!!! Can't be updated");
-
     }
-
 }
